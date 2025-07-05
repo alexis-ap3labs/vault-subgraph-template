@@ -1,0 +1,264 @@
+# ERC20 Events
+type TransferEvent @entity(immutable: true) {
+  id: String!
+  from: Bytes!
+  to: Bytes!
+  value: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ApprovalEvent @entity(immutable: true) {
+  id: String!
+  owner: Bytes!
+  spender: Bytes!
+  value: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+# Deposit/Withdraw Events
+type DepositEvent @entity(immutable: true) {
+  id: String!
+  sender: Bytes!
+  owner: Bytes!
+  assets: BigInt!
+  shares: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type WithdrawEvent @entity(immutable: true) {
+  id: String!
+  sender: Bytes!
+  receiver: Bytes!
+  owner: Bytes!
+  assets: BigInt!
+  shares: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+# Request Events
+type DepositRequestEvent @entity(immutable: true) {
+  id: String!
+  controller: Bytes!
+  owner: Bytes!
+  requestId: BigInt!
+  sender: Bytes!
+  assets: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RedeemRequestEvent @entity(immutable: true) {
+  id: String!
+  controller: Bytes!
+  owner: Bytes!
+  requestId: BigInt!
+  sender: Bytes!
+  shares: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DepositRequestCanceledEvent @entity(immutable: true) {
+  id: String!
+  requestId: BigInt!
+  controller: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+# Settlement Events
+type SettleDepositEvent @entity(immutable: true) {
+  id: String!
+  epochId: BigInt!
+  settledId: BigInt!
+  totalAssets: BigInt!
+  totalSupply: BigInt!
+  assetsDeposited: BigInt!
+  sharesMinted: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SettleRedeemEvent @entity(immutable: true) {
+  id: String!
+  epochId: BigInt!
+  settledId: BigInt!
+  totalAssets: BigInt!
+  totalSupply: BigInt!
+  assetsWithdrawed: BigInt!
+  sharesBurned: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+# State Events
+type StateUpdatedEvent @entity(immutable: true) {
+  id: String!
+  state: Int!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PausedEvent @entity(immutable: true) {
+  id: String!
+  account: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UnpausedEvent @entity(immutable: true) {
+  id: String!
+  account: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+# Operator Events
+type OperatorSetEvent @entity(immutable: true) {
+  id: String!
+  controller: Bytes!
+  operator: Bytes!
+  approved: Boolean!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+# Fee Events
+type RatesUpdatedEvent @entity(immutable: true) {
+  id: String!
+  oldManagementRate: Int!
+  oldPerformanceRate: Int!
+  newManagementRate: Int!
+  newPerformanceRate: Int!
+  timestamp: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type FeeReceiverUpdatedEvent @entity(immutable: true) {
+  id: String!
+  oldReceiver: Bytes!
+  newReceiver: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+# Asset Update Events
+type TotalAssetsUpdatedEvent @entity(immutable: true) {
+  id: String!
+  totalAssets: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NewTotalAssetsUpdatedEvent @entity(immutable: true) {
+  id: String!
+  totalAssets: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type HighWaterMarkUpdatedEvent @entity(immutable: true) {
+  id: String!
+  oldHighWaterMark: BigInt!
+  newHighWaterMark: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+# Whitelist Events
+type WhitelistUpdatedEvent @entity(immutable: true) {
+  id: String!
+  account: Bytes!
+  authorized: Boolean!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type WhitelistManagerUpdatedEvent @entity(immutable: true) {
+  id: String!
+  oldManager: Bytes!
+  newManager: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type WhitelistDisabledEvent @entity(immutable: true) {
+  id: String!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+# Valuation Manager Events
+type ValuationManagerUpdatedEvent @entity(immutable: true) {
+  id: String!
+  oldManager: Bytes!
+  newManager: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+# Ownership Events
+type OwnershipTransferStartedEvent @entity(immutable: true) {
+  id: String!
+  previousOwner: Bytes!
+  newOwner: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransferredEvent @entity(immutable: true) {
+  id: String!
+  previousOwner: Bytes!
+  newOwner: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+# Referral Events
+type ReferralEvent @entity(immutable: true) {
+  id: String!
+  referral: Bytes!
+  owner: Bytes!
+  requestId: BigInt!
+  assets: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type InitializedEvent @entity(immutable: true) {
+  id: String!
+  version: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+} 

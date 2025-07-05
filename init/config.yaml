@@ -1,0 +1,12 @@
+# Deployment-specific configuration
+# Modify these values according to your deployment
+
+network: "base"                    # Blockchain network (mainnet, base, polygon, etc.)
+contractAddress: "0xd4401d8bea82e4e6c40bb26ae3a04d2fb7ca4550"  # Vault contract address
+startBlock: 31657867               # Starting block for indexing
+contractName: "Vault"              # Contract name (used for imports)
+description: "DeTrade Core Vault Subgraph"  # Subgraph description
+
+# Graph deployment configuration
+subgraphName: "detrade-core-eurc"  # Your subgraph name on The Graph
+deployKey: "94d9340270747f0b2251d7b5b116daf5"       # Your Graph deploy key 

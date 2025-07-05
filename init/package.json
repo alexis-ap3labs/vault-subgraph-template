@@ -1,0 +1,16 @@
+{
+  "name": "subgraph-dev-detrade-core-usdc",
+  "version": "1.0.0",
+  "scripts": {
+    "generate": "node scripts/generate-subgraph.js",
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "node scripts/deploy.js"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.97.0",
+    "@graphprotocol/graph-ts": "^0.38.0",
+    "js-yaml": "^4.1.0",
+    "open": "^9.1.0"
+  }
+}

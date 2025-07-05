@@ -1,0 +1,29 @@
+name: Run Mongo Sync
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-mongo-sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./mongo-sync
+
+      - name: Run mongo sync script
+        run: node sync-once.js
+        working-directory: ./mongo-sync
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          MONGODB_DB_NAME: ${{ secrets.MONGODB_DB_NAME }}
+          MONGODB_COLLECTION_NAME: ${{ secrets.MONGODB_COLLECTION_NAME }}
